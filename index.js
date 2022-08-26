@@ -35,3 +35,25 @@ every = { name: "Anas",
     age: 22,
     married: false };
 console.log(every);
+var greet;
+greet = function () {
+    console.log("Hello World");
+};
+greet();
+function add(a, b) {
+    return a + b;
+}
+add(10, 20);
+var minus = function (a, b) {
+    return a - b;
+};
+var calc;
+calc = function (numOne, numTwo, action) {
+    if (action === "add") {
+        return numOne + numTwo;
+    }
+    else if (action === "sub") {
+        return numOne - numTwo;
+    }
+};
+console.log(calc(10, 20, "sub"));

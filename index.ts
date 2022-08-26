@@ -1,3 +1,5 @@
+type strOrNum = string | number;
+
 const character: string = 'Anas Jakwani';
 console.log(character);
 const inputs = document.querySelectorAll('input');
@@ -20,7 +22,7 @@ let mixed = ['Anas', 22, false, 'Ahad', 27, true];
 
 let work : string[] = [];
 // for more than one datatype array
-let work1: (string|number|boolean)[] = []
+let work1: (strOrNum|boolean)[] = []
 
 let obj: object;
 obj = { name : 'Anas',
@@ -48,3 +50,33 @@ every = { name: "Anas",
           age: 22,
           married: false};
 console.log(every);
+
+let greet: Function;
+
+greet = (): void =>{
+    console.log("Hello World");
+}
+
+greet();
+function add (a:number, b:number): number{
+    return a+b;
+}
+
+add(10, 20);
+
+const minus = (a: number, b: number): number =>{
+    return a - b;
+}
+
+let calc: (a: number, b: number, c: string) => number;
+
+calc = (numOne: number, numTwo: number, action: string): number => {
+    if(action === "add"){
+        return numOne + numTwo;
+    }
+    else if(action === "sub"){
+        return numOne - numTwo;
+    }
+}
+
+console.log(calc(10, 20, "sub"));

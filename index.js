@@ -49,11 +49,13 @@ var minus = function (a, b) {
 };
 var calc;
 calc = function (numOne, numTwo, action) {
+    var result1;
     if (action === "add") {
-        return numOne + numTwo;
+        result1 = numOne + numTwo;
     }
-    else if (action === "sub") {
-        return numOne - numTwo;
+    else {
+        result1 = numOne - numTwo;
     }
+    return result1;
 };
-console.log(calc(10, 20, "sub"));
+console.log(calc(10, 25, "add"));

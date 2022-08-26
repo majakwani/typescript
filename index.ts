@@ -71,12 +71,14 @@ const minus = (a: number, b: number): number =>{
 let calc: (a: number, b: number, c: string) => number;
 
 calc = (numOne: number, numTwo: number, action: string): number => {
+    let result1: number;
     if(action === "add"){
-        return numOne + numTwo;
+        result1 = numOne + numTwo;
     }
-    else if(action === "sub"){
-        return numOne - numTwo;
+    else {
+        result1 = numOne - numTwo;
     }
+    return result1;
 }
 
-console.log(calc(10, 20, "sub"));
+console.log(calc(10, 25, "add"));

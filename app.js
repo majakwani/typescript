@@ -1,21 +1,21 @@
 import { Invoice } from './invoice.js';
 import { Payment } from './Payment.js';
-const invOne = new Invoice('Anas', 'Worked on a website', 600);
-const invTwo = new Invoice('Talha', 'Worked the finances', 500);
-const payOne = new Payment('Ahmed', 'Sold our stuff', 250);
-const payTwo = new Payment('Ahad', 'Did Accounting', 500);
-let invoices = [];
-let payments = [];
-invoices.push(invOne);
-invoices.push(invTwo);
-payments.push(payOne);
-payments.push(payTwo);
+import { renderOnPage } from './listTemplate.js';
 const form = document.querySelector('.new-item-form');
 const type = document.querySelector('#type');
 const tofrom = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
+const ul = document.querySelector('ul');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+    let doc;
+    if (type.value === 'invoice') {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        renderOnPage(ul, type.value, doc);
+    }
+    else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        renderOnPage(ul, type.value, doc);
+    }
 });

@@ -1,20 +1,6 @@
 import { Invoice } from './invoice.js';
 import { Payment } from './Payment.js';
-
-const invOne = new Invoice('Anas', 'Worked on a website', 600);
-const invTwo = new Invoice('Talha', 'Worked the finances', 500);
-
-const payOne = new Payment('Ahmed', 'Sold our stuff', 250);
-const payTwo = new Payment('Ahad', 'Did Accounting', 500);
-
-let invoices: Invoice[] = [];
-let payments: Payment[] = [];
-
-invoices.push(invOne);
-invoices.push(invTwo);
-
-payments.push(payOne);
-payments.push(payTwo);
+import { renderOnPage } from './listTemplate.js';
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
 const type = document.querySelector('#type') as HTMLSelectElement;
@@ -22,10 +8,18 @@ const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
 const details = document.querySelector('#details') as HTMLInputElement;
 const amount = document.querySelector('#amount') as HTMLInputElement;
 
+const ul = document.querySelector('ul')!;
 form.addEventListener('submit', (e: Event) =>{
     e.preventDefault();
-    console.log(type.value,
-        tofrom.value,
-        details.value,
-        amount.valueAsNumber);
-})
+
+    let doc: Invoice | Payment;
+
+    if(type.value === 'invoice'){
+        doc = new Invoice (tofrom.value, details.value, amount.valueAsNumber);
+        renderOnPage(ul,type.value, doc);
+    }
+    else{
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+        renderOnPage(ul,type.value, doc);
+    }
+});

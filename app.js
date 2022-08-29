@@ -1,2 +1,21 @@
-var anchor = document.querySelector('a');
-console.log(anchor.href);
+import { Invoice } from './invoice.js';
+import { Payment } from './Payment.js';
+const invOne = new Invoice('Anas', 'Worked on a website', 600);
+const invTwo = new Invoice('Talha', 'Worked the finances', 500);
+const payOne = new Payment('Ahmed', 'Sold our stuff', 250);
+const payTwo = new Payment('Ahad', 'Did Accounting', 500);
+let invoices = [];
+let payments = [];
+invoices.push(invOne);
+invoices.push(invTwo);
+payments.push(payOne);
+payments.push(payTwo);
+const form = document.querySelector('.new-item-form');
+const type = document.querySelector('#type');
+const tofrom = document.querySelector('#tofrom');
+const details = document.querySelector('#details');
+const amount = document.querySelector('#amount');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+});
